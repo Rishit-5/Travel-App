@@ -13,7 +13,7 @@ const auth = Firebase.auth()
       auth.createUserWithEmailAndPassword(email, password)
           .then(userCredentials =>{
             const user = userCredentials.user;
-            console.log(user.email)
+            props.navigation.navigate('Tabs', { screen: 'Home' })
           })
           .catch(error => alert(error.message))
     }
@@ -21,7 +21,8 @@ const auth = Firebase.auth()
       auth.signInWithEmailAndPassword(email,password)
           .then(userCredentials =>{
             const user = userCredentials.user;
-            alert("Logged in with: " + user.email)
+            props.navigation.navigate('Tabs', { screen: 'Home' })
+
           })
           .catch(error => alert(error.message))
     }

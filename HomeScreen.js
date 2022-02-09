@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Button, View, Text, TouchableOpacity } from 'react-native';
+import Firebase from './firebase'
+const auth = Firebase.auth()
 
 export default function HomeScreen(props) {
     function saveAccessToken (result){
@@ -60,7 +62,7 @@ export default function HomeScreen(props) {
     }
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
+            <Text>{auth.currentUser?.email}</Text>
             <TouchableOpacity
                 onPress={() => props.navigation.navigate('Profile')}>
                 <Text>go to profile</Text>

@@ -3,8 +3,17 @@ import {View, Text, TouchableOpacity} from 'react-native'
 import img from "./assets/favicon.png"
 import { Avatar } from 'react-native-paper';
 import { Icon, Divider } from 'react-native-elements';
+import Firebase from './firebase'
+const auth = Firebase.auth()
 
 export default function CustomMenu(props){
+    const handleSignOut = () => {
+        auth
+            .signOut()
+            .then(() =>{
+                props.navigation.replace("Login")
+            })
+    }
     return(
         <View style={{flex: 1, flexDirection: "column", padding: "5%", backgroundColor: "white"}}>
             <View style = {{flex: 1, justifyContent: "center", backgroundColor: "white"}}>
@@ -63,7 +72,7 @@ export default function CustomMenu(props){
 
             <TouchableOpacity
                 style = {{flex: 1, flexDirection: "row", alignItems: "center"}}
-                onPress = {() => {props.navigation.navigate("Login")}}>
+                onPress = {() => {handleSignOut()}}>
                 <Icon name='logout'
                       type='material'
                       color='#000'
