@@ -15,13 +15,13 @@ export default function CustomMenu(props){
             })
     }
     return(
-        <View style={{flex: 1, flexDirection: "column", padding: "5%", backgroundColor: "white"}}>
-            <View style = {{flex: 1, justifyContent: "center", backgroundColor: "white"}}>
+        <View style={{flex: 1, flexDirection: "column", padding: "5%"}}>
+            <View style = {{flex: 1, justifyContent: "center"}}>
                 <View style = {{flexDirection: "row", alignItems: "center"}}>
                     <Avatar.Image style = {{marginRight: "5%"}} source = {img}/>
                     <View>
                         <Text style = {{fontSize: 28, fontWeight: "bold"}}>Rishit Patil</Text>
-                        <Text style = {{ fontSize: 14}}>rishistar05@gmail.com</Text>
+                        <Text style = {{ fontSize: 14}}>{auth.currentUser?.email}</Text>
                     </View>
                 </View>
             </View>
