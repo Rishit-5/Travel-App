@@ -29,6 +29,7 @@ const auth = Firebase.auth()
     const styles = StyleSheet.create({
       input: {
         height: 40,
+        width: 200,
         margin: 6,
         borderWidth: 1,
         padding: 10,
@@ -49,14 +50,14 @@ const auth = Firebase.auth()
     return (
         <ImageBackground source = {image} resizeMode="cover" style = {{flex: 1}} blurRadius={5}>
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "rgba(0,0,0,.7)"}}>
-            <Text style = {styles.header}>TripTip</Text>
+            <Text style = {styles.header}>TripEclipse</Text>
             <TextInput style = {styles.input} value = {email} placeholder="Email" onChangeText={text => setEmail(text)}></TextInput>
             <TextInput style = {styles.input} value = {password} placeholder="Password" onChangeText={text => setPassword(text)} secureTextEntry></TextInput>
 
-            <TouchableOpacity onPress={handleSignIn} style = {{backgroundColor: "#1E90FF", padding: 10, borderRadius: 5, margin: 6}}>
+            <TouchableOpacity onPress={handleSignIn} style = {{backgroundColor: "#1E90FF",justifyContent: "center", alignItems: "center", width: 100, height: 40, borderRadius: 5, margin: 6}}>
               <Text style = {{color: "white"}}>Log In</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleSignUp} style = {{backgroundColor: "#1E90FF", padding: 10, borderRadius: 5, margin: 6}}>
+            <TouchableOpacity onPress={handleSignUp} style = {{backgroundColor: "#1E90FF", justifyContent: "center", alignItems: "center", width: 100, height: 40, borderRadius: 5, margin: 6}}>
               <Text style = {{color: "white"}}>Register</Text>
             </TouchableOpacity>
 

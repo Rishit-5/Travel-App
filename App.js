@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { Button, View, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomMenu from './CustomMenu';
 import HomeScreen from './HomeScreen';
 import NotificationsScreen from './NotificationsScreen';
 import ProfileScreen from './ProfileScreen';
 import LoginScreen from './LoginScreen';
+import {
+    Provider as PaperProvider,
+    DefaultTheme as PaperDefaultTheme,
+    DarkTheme as PaperDarkTheme,
+} from 'react-native-paper';
 
 
 const Drawer = createDrawerNavigator();
@@ -25,7 +30,7 @@ function Tabs() {
 }
 export default function App() {
     return (
-        <NavigationContainer>
+        <NavigationContainer theme = {DarkTheme}>
             <Stack.Navigator
                 initialRouteName="Login"
                 drawerContent={(props) => <CustomMenu {...props} />}>

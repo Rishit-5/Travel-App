@@ -20,8 +20,8 @@ export default function CustomMenu(props){
                 <View style = {{flexDirection: "row", alignItems: "center"}}>
                     <Avatar.Image style = {{marginRight: "5%"}} source = {img}/>
                     <View>
-                        <Text style = {{fontSize: 28, fontWeight: "bold"}}>Rishit Patil</Text>
-                        <Text style = {{ fontSize: 14}}>{auth.currentUser?.email}</Text>
+                        <Text style = {{fontSize: 28, fontWeight: "bold", color: "white"}}>Rishit Patil</Text>
+                        <Text style = {{ fontSize: 14, color: "white"}}>{auth.currentUser?.email}</Text>
                     </View>
                 </View>
             </View>
@@ -33,10 +33,10 @@ export default function CustomMenu(props){
                 onPress = {() => {props.navigation.navigate("Home")}}>
                 <Icon name='home'
                       type='material'
-                      color='#000'
+                      color='#FFF'
                       size = "35"
                 />
-                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20}}>Home
+                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20, color: "white"}}>Home
                 </Text>
 
             </TouchableOpacity>
@@ -46,10 +46,10 @@ export default function CustomMenu(props){
                 onPress = {() => {props.navigation.navigate("Notifications")}}>
                 <Icon name='notifications'
                       type='material'
-                      color='#000'
+                      color='#FFF'
                       size = "35"
                 />
-                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20}}>Notifications
+                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20 , color: "white"}}>Notifications
                 </Text>
 
             </TouchableOpacity>
@@ -59,10 +59,10 @@ export default function CustomMenu(props){
             onPress = {() => {props.navigation.navigate("Profile")}}>
             <Icon name='person'
                   type='material'
-                  color='#000'
+                  color='#FFF'
                   size = "35"
             />
-            <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20}}>Profile
+            <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20, color: "white"}}>Profile
             </Text>
 
         </TouchableOpacity>
@@ -75,10 +75,10 @@ export default function CustomMenu(props){
                 onPress = {() => {handleSignOut()}}>
                 <Icon name='logout'
                       type='material'
-                      color='#000'
+                      color='#FFF'
                       size = "35"
                 />
-                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20}}>Sign Out
+                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20, color: "white"}}>Sign Out
                 </Text>
 
             </TouchableOpacity>
