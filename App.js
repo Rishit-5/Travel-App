@@ -8,6 +8,7 @@ import HomeScreen from './HomeScreen';
 import NotificationsScreen from './NotificationsScreen';
 import ProfileScreen from './ProfileScreen';
 import LoginScreen from './LoginScreen';
+import Personalization from "./Personalization";
 import {
     Provider as PaperProvider,
     DefaultTheme as PaperDefaultTheme,
@@ -15,11 +16,14 @@ import {
 } from 'react-native-paper';
 
 
+
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+
 function Tabs() {
     return (
         <Drawer.Navigator
+            screenOptions={{headerTintColor: '#FFFFFF'}}
             initialRouteName="Home"
             drawerContent={(props) => <CustomMenu {...props} />}>
             <Drawer.Screen name="Home" component={HomeScreen} />
@@ -32,9 +36,11 @@ export default function App() {
     return (
         <NavigationContainer theme = {DarkTheme}>
             <Stack.Navigator
+
                 initialRouteName="Login"
                 drawerContent={(props) => <CustomMenu {...props} />}>
                 <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
+                <Stack.Screen name="Personalization" component={Personalization} options={{headerShown: false}}/>
                 <Stack.Screen name="Tabs" component={Tabs} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>

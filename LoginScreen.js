@@ -21,7 +21,7 @@ const auth = Firebase.auth()
       auth.signInWithEmailAndPassword(email,password)
           .then(userCredentials =>{
             const user = userCredentials.user;
-            props.navigation.navigate('Tabs', { screen: 'Home' })
+            props.navigation.navigate('Personalization')
 
           })
           .catch(error => alert(error.message))
