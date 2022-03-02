@@ -50,7 +50,7 @@ const auth = Firebase.auth()
     return (
         <ImageBackground source = {image} resizeMode="cover" style = {{flex: 1}} blurRadius={5}>
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "rgba(0,0,0,.7)"}}>
-            <Text style = {styles.header}>TripEclipse</Text>
+            <Text style = {styles.header}>TripEclips</Text>
             <TextInput style = {styles.input} value = {email} placeholder="Email" onChangeText={text => setEmail(text)}></TextInput>
             <TextInput style = {styles.input} value = {password} placeholder="Password" onChangeText={text => setPassword(text)} secureTextEntry></TextInput>
 
