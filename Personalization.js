@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import AlgoliaPlaces from 'algolia-places-react';
 import {StyleSheet, TextInput, View, Text, Image, Platform, Button, TouchableOpacity} from "react-native";
 import * as ImagePicker from 'expo-image-picker';
+import Firebase from './firebase'
+const db = Firebase.database()
+
 
 
 export default function Personalization(props) {
@@ -25,16 +28,27 @@ export default function Personalization(props) {
         setSelectedImage({ localUri: pickerResult.uri });
     };
 
+    let submitForm = () => {
+        db.ref('users/' + "userId").set({
+            username: "name",
+            email: "email",
+            profile_picture : "imageUrl"
+        });
+    };
+
     if (selectedImage !== null) {
         return (
             <View style={styles.container}>
                 <Text style = {{color: "white", textAlign: "center"}}>First Name</Text>
-                <TextInput style = {styles.input} value = {firstName} placeholder="First Name" onChangeText={text => setFirstName(text)}></TextInput>
+                <TextInput style = {styles.input} value = {firstName} placeholder="First Name" onChangeText={text => setFirstName(text)}/>
                 <Text style = {{color: "white", textAlign: "center"}}>Last Name</Text>
-                <TextInput style = {styles.input} value = {lastName} placeholder="Last Name" onChangeText={text => setLastName(text)}></TextInput>
+                <TextInput style = {styles.input} value = {lastName} placeholder="Last Name" onChangeText={text => setLastName(text)}/>
                 <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
                 <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
                     <Text style={styles.buttonText}>Pick a photo</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={submitForm} style={styles.button}>
+                    <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -49,6 +63,9 @@ export default function Personalization(props) {
             <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
             <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
                 <Text style={styles.buttonText}>Pick a photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={submitForm} style={styles.button}>
+                <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>
         </View>
     );

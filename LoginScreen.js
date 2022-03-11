@@ -4,6 +4,7 @@ import {useState} from "react";
 import Firebase from './firebase'
 const image = {uri: "https://i.pinimg.com/736x/57/3b/9b/573b9b73c22586c8f4b651e38c244635.jpg"}
 const auth = Firebase.auth()
+const db = Firebase.database()
 
   export default function LoginScreen(props) {
     const [email, setEmail] = useState('')
@@ -50,7 +51,7 @@ const auth = Firebase.auth()
     return (
         <ImageBackground source = {image} resizeMode="cover" style = {{flex: 1}} blurRadius={5}>
           <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "rgba(0,0,0,.7)"}}>
-            <Text style = {styles.header}>TripEclips</Text>
+            <Text style = {styles.header}>TripEclipse</Text>
             <TextInput style = {styles.input} value = {email} placeholder="Email" onChangeText={text => setEmail(text)}></TextInput>
             <TextInput style = {styles.input} value = {password} placeholder="Password" onChangeText={text => setPassword(text)} secureTextEntry></TextInput>
 
