@@ -3,14 +3,17 @@ import AlgoliaPlaces from 'algolia-places-react';
 import {StyleSheet, TextInput, View, Text, Image, Platform, Button, TouchableOpacity} from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import Firebase from './firebase'
+import CustomMenu from "./CustomMenu";
 const db = Firebase.database()
-
-
+const auth = Firebase.auth()
+const storage = Firebase.storage()
 
 export default function Personalization(props) {
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     let [selectedImage, setSelectedImage] = React.useState(null);
+    let pickerResult;
+
 
     let openImagePickerAsync = async () => {
         let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -20,20 +23,41 @@ export default function Personalization(props) {
             return;
         }
 
-        let pickerResult = await ImagePicker.launchImageLibraryAsync();
+        pickerResult = await ImagePicker.launchImageLibraryAsync();
         if (pickerResult.cancelled === true) {
             return;
         }
 
         setSelectedImage({ localUri: pickerResult.uri });
+
     };
 
     let submitForm = () => {
-        db.ref('users/' + "userId").set({
-            username: "name",
-            email: "email",
-            profile_picture : "imageUrl"
+        if (!(selectedImage == null)){
+            uploadImage(selectedImage.localUri)
+        }
+        db.ref('users/' + auth.currentUser.uid).set({
+            fname: firstName,
+            lname: lastName,
+            email: auth.currentUser.email,
         });
+        props.navigation.navigate('Tabs', {
+            screen: 'Home'
+        })
+    };
+    let uploadImage = async (uri) => {
+        const response = await fetch(uri)
+        const blob = await response.blob();
+
+        let ref = storage.ref().child(firstName+"_"+lastName+"PFP")
+        storage.ref(firstName+"_"+lastName+"PFP").getDownloadURL()
+            .then((url) => {
+                db.ref('users/' + auth.currentUser.uid + '/pfp').set({
+                    pfpurl: url
+                });
+            })
+        return ref.put(blob)
+
     };
 
     if (selectedImage !== null) {
@@ -102,6 +126,7 @@ const styles = StyleSheet.create({
         height: 300,
         resizeMode: 'contain',
     },
+
     input: {
         height: 40,
         width: 200,

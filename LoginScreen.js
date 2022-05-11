@@ -14,7 +14,8 @@ const db = Firebase.database()
       auth.createUserWithEmailAndPassword(email, password)
           .then(userCredentials =>{
             const user = userCredentials.user;
-            props.navigation.navigate('Tabs', { screen: 'Home' })
+              props.navigation.navigate('Personalization')
+
           })
           .catch(error => alert(error.message))
     }
@@ -22,8 +23,8 @@ const db = Firebase.database()
       auth.signInWithEmailAndPassword(email,password)
           .then(userCredentials =>{
             const user = userCredentials.user;
-            props.navigation.navigate('Personalization')
-
+              props.navigation.navigate('Tabs', { screen: 'Home' })
+            console.log(auth.currentUser)
           })
           .catch(error => alert(error.message))
     }

@@ -2,6 +2,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';// TODO: Add SDKs for Firebase products that you want to use
 import 'firebase/database'
+import 'firebase/storage'
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration

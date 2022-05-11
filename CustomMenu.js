@@ -7,6 +7,7 @@ import Firebase from './firebase'
 const auth = Firebase.auth()
 
 export default function CustomMenu(props){
+
     const handleSignOut = () => {
         auth
             .signOut()
@@ -14,11 +15,13 @@ export default function CustomMenu(props){
                 props.navigation.replace("Login")
             })
     }
+
+
     return(
         <View style={{flex: 1, flexDirection: "column", padding: "5%"}}>
             <View style = {{flex: 1, justifyContent: "center"}}>
                 <View style = {{flexDirection: "row", alignItems: "center"}}>
-                    <Avatar.Image style = {{marginRight: "5%"}} source = {img}/>
+                    <Avatar.Image style = {{marginRight: "5%"}} source = {auth.currentUser?.photoURL}/>
                     <View>
                         <Text style = {{fontSize: 28, fontWeight: "bold", color: "white"}}>Rishit Patil</Text>
                         <Text style = {{ fontSize: 14, color: "white"}}>{auth.currentUser?.email}</Text>
@@ -43,13 +46,13 @@ export default function CustomMenu(props){
 
             <TouchableOpacity
                 style = {{flex: 1, flexDirection: "row", alignItems: "center"}}
-                onPress = {() => {props.navigation.navigate("Notifications")}}>
+                onPress = {() => {props.navigation.navigate("Trip Finder")}}>
                 <Icon name='notifications'
                       type='material'
                       color='#FFF'
                       size = "35"
                 />
-                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20 , color: "white"}}>Notifications
+                <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20 , color: "white"}}>Trip Finder
                 </Text>
 
             </TouchableOpacity>

@@ -63,10 +63,9 @@ export default function HomeScreen(props) {
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text>{auth.currentUser?.email}</Text>
-            <TouchableOpacity
-                onPress={() => props.navigation.navigate('Profile')}>
-                <Text>go to profile</Text>
-            </TouchableOpacity>
+            <Button
+                onPress={() => apiCall()} title="api call">
+            </Button>
         </View>
     );
 }
