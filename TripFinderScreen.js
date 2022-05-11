@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {Button, View, Text, TouchableOpacity, TextInput, StyleSheet} from 'react-native';
 import Firebase from './firebase'
+import DropDownPicker from 'react-native-dropdown-picker';
+
 import {useState} from "react";
 const auth = Firebase.auth()
 
@@ -9,7 +11,12 @@ export default function TripFinderScreen(props) {
     const [IATA1, setIATA1] = useState('')
     const [IATA2, setIATA2] = useState('')
     const [IATA3, setIATA3] = useState('')
-
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        {label: 'Apple', value: 'apple'},
+        {label: 'Banana', value: 'banana'}
+    ]);
 
     function saveAccessToken (result){
         var a = JSON.parse(result)
@@ -45,9 +52,12 @@ export default function TripFinderScreen(props) {
     function readData(result){
         var obj = JSON.parse(result)
         console.log(obj.data[0].name)
-
+        var str = "";
+        for (let i = 0; i < obj.data.length; i++) {
+            str+=obj.data[i].name + ";"
+        }
         props.navigation.navigate('Locations', {
-            firstCity: obj.data[0].name
+            cities: str
         })
     }
     function apiCall(){
@@ -113,7 +123,14 @@ export default function TripFinderScreen(props) {
             <TextInput style = {styles.input} value = {IATA1} placeholder="First IATA Code" onChangeText={text => setIATA1(text)}></TextInput>
             <TextInput style = {styles.input} value = {IATA2} placeholder="Second IATA Code" onChangeText={text => setIATA2(text)}></TextInput>
             <TextInput style = {styles.input} value = {IATA3} placeholder="Third IATA Code" onChangeText={text => setIATA3(text)}></TextInput>
-
+            <DropDownPicker
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+            />
             <Button
                 onPress={() => apiCall()} title="api call">
             </Button>
