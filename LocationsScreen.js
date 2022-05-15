@@ -12,6 +12,7 @@ export default function LocationsScreen(props) {
     let [links, setLinks] = useState([])
     let [geocodes, setGeocodes] = useState([])
 
+
     const [image, setImage] = useState([])
     var testArray = []
     cities = route.params.cities.split(";")
@@ -22,6 +23,9 @@ export default function LocationsScreen(props) {
 
     geocodes = route.params.geocodes.split(";")
     geocodes = geocodes.slice(0,-1)
+
+    console.log(geocodes)
+
 
     console.log(cities.length)
 

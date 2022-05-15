@@ -32,7 +32,7 @@ export default function LocationDataScreen(props) {
     covid = route.params.covid
 
     latitude = geocode.substring(0, geocode.indexOf(","))
-    longitude = geocode.substring(geocode.indexOf(",") + 2)
+    longitude = geocode.substring(geocode.indexOf(",") + 1)
 
     console.log(latitude)
     console.log(longitude)
