@@ -9,12 +9,9 @@ import TripFinderScreen from './TripFinderScreen';
 import ProfileScreen from './ProfileScreen';
 import LoginScreen from './LoginScreen';
 import Personalization from "./Personalization";
-import {
-    Provider as PaperProvider,
-    DefaultTheme as PaperDefaultTheme,
-    DarkTheme as PaperDarkTheme,
-} from 'react-native-paper';
+
 import LocationsScreen from "./LocationsScreen";
+import LocationDataScreen from "./LocationDataScreen";
 
 
 
@@ -31,6 +28,7 @@ function Tabs() {
             <Drawer.Screen name="Trip Finder" component={TripFinderScreen} />
             <Drawer.Screen name="Profile" component={ProfileScreen} />
             <Drawer.Screen name="Locations" component={LocationsScreen} />
+            <Drawer.Screen name="LocationData" component={LocationDataScreen} />
         </Drawer.Navigator>
     );
 }
@@ -39,7 +37,7 @@ export default function App() {
         <NavigationContainer theme = {DarkTheme}>
             <Stack.Navigator
 
-                initialRouteName="Login"
+                initialRouteName="Tabs"
                 drawerContent={(props) => <CustomMenu {...props} />}>
                 <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
                 <Stack.Screen name="Personalization" component={Personalization} options={{headerShown: false}}/>
