@@ -11,11 +11,22 @@ export default function LocationDataScreen(props) {
     let [link, setLink] = useState()
     let [geocode, setGeocode] = useState()
     let [budget, setBudget] = useState()
+    let [safety, setSafety] = useState()
+    let [covid, setCovid] = useState()
+    let [latitude, setLatitude] = useState()
+    let [longitude, setLongitude] = useState()
+
+
 
     city = route.params.city
     link = route.params.link
     geocode = route.params.geocode
     budget = route.params.budget
+    safety = route.params.safety
+    covid = route.params.covid
+
+    latitude = geocode.substring(0, geocode.indexOf(","))
+    longitude = geocode.substring(geocode.indexOf("," + 1))
 
     const styles = StyleSheet.create({
         surface: {
@@ -33,16 +44,17 @@ export default function LocationDataScreen(props) {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Image style = {{flex: 2, width: Dimensions.get('window').width}} source = {{uri: link}}></Image>
             <ScrollView style = {{flex: 5}}>
+                <Text style = {{fontSize: 40, color: "white", textAlign: "center"}}>{city}</Text>
                 <Surface style = {styles.surface} theme = {DarkTheme}>
-                    <Text style = {{color: "#FFFFFF"}}>{budget}</Text>
+                    <Text style = {{color: "#FFFFFF"}}>Budget: {budget}</Text>
                 </Surface>
 
                 <Surface style = {styles.surface} theme = {DarkTheme}>
-                    <Text style = {{color: "#FFFFFF"}}>leudjnk,</Text>
+                    <Text style = {{color: "#FFFFFF"}}>Safety: {safety}</Text>
                 </Surface>
 
                 <Surface style = {styles.surface} theme = {DarkTheme}>
-                    <Text style = {{color: "#FFFFFF"}}>leudjnk,</Text>
+                    <Text style = {{color: "#FFFFFF"}}>Covid: {covid}</Text>
                 </Surface>
             </ScrollView>
         </View>

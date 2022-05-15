@@ -90,13 +90,22 @@ export default function LocationsScreen(props) {
         var budget = obj.data.attributes.budget
         budget = JSON.stringify(budget)
         budget = budget.substring(budget.indexOf("value")+ 7, budget.indexOf("value")+ 8)
-        console.log(budget)
+
+        var safety = obj.data.attributes.safety
+        safety = JSON.stringify(safety)
+        safety = safety.substring(safety.indexOf("value")+ 7, safety.indexOf("value")+ 8)
+
+        var covid = obj.data.attributes.covid
+        covid = JSON.stringify(covid)
+        covid = covid.substring(covid.indexOf("value")+ 7, covid.indexOf("value")+ 8)
 
         props.navigation.navigate('LocationData', {
             city: cities[index],
             link: links[index],
             geocode: geocodes[index],
-            budget: budget
+            budget: budget,
+            safety: safety,
+            covid: covid
         })
     }
 
