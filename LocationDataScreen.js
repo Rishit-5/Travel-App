@@ -3,9 +3,12 @@ import { Button, View, Text, TouchableOpacity, Image, Dimensions, ScrollView, St
 import {useState} from "react";
 import { useRoute} from '@react-navigation/native';
 import { Surface, DarkTheme } from 'react-native-paper';
+import GoogleMapReact from 'google-map-react';
 
 
 export default function LocationDataScreen(props) {
+    const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
     const route = useRoute();
     let [city, setCity] = useState()
     let [link, setLink] = useState()
@@ -15,7 +18,10 @@ export default function LocationDataScreen(props) {
     let [covid, setCovid] = useState()
     let [latitude, setLatitude] = useState()
     let [longitude, setLongitude] = useState()
-
+    const [position, setPosition] = useState({
+        lat: 41,
+        lng: -71
+    });
 
 
     city = route.params.city
@@ -26,7 +32,14 @@ export default function LocationDataScreen(props) {
     covid = route.params.covid
 
     latitude = geocode.substring(0, geocode.indexOf(","))
-    longitude = geocode.substring(geocode.indexOf("," + 1))
+    longitude = geocode.substring(geocode.indexOf(",") + 2)
+
+    console.log(latitude)
+    console.log(longitude)
+
+    console.log(Number(latitude))
+    console.log(Number(longitude))
+
 
     const styles = StyleSheet.create({
         surface: {
@@ -56,6 +69,22 @@ export default function LocationDataScreen(props) {
                 <Surface style = {styles.surface} theme = {DarkTheme}>
                     <Text style = {{color: "#FFFFFF"}}>Covid: {covid}</Text>
                 </Surface>
+                <View style = {{height: 300}}>
+                <GoogleMapReact style={{height: 100}}
+                    bootstrapURLKeys={{ key: "AIzaSyBwxCf45NthTeypSvHce6vYQuFiT4X6ChM" }}
+                    defaultCenter={{
+                        lat: Number(latitude),
+                        lng: Number(longitude)
+                    }}
+                    defaultZoom={11}
+                >
+                    <AnyReactComponent
+                        lat={59.955413}
+                        lng={30.337844}
+                        text="My Marker"
+                    />
+                </GoogleMapReact>
+        </View>
             </ScrollView>
         </View>
     );
