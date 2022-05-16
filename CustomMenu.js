@@ -59,13 +59,13 @@ export default function CustomMenu(props){
 
             <TouchableOpacity
             style = {{flex: 1, flexDirection: "row", alignItems: "center"}}
-            onPress = {() => {props.navigation.navigate("Profile")}}>
-            <Icon name='person'
+            onPress = {() => {props.navigation.navigate("Search")}}>
+            <Icon name='search'
                   type='material'
                   color='#FFF'
                   size = "35"
             />
-            <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20, color: "white"}}>Profile
+            <Text style = {{marginLeft: "5%", fontWeight: "bold", fontSize: 20, color: "white"}}>Search
             </Text>
 
         </TouchableOpacity>

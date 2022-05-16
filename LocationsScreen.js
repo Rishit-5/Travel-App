@@ -91,6 +91,8 @@ export default function LocationsScreen(props) {
         console.log(result)
         var obj = JSON.parse(result)
 
+        var pop = obj.data.attributes.population
+
         var budget = obj.data.attributes.budget
         budget = JSON.stringify(budget)
         budget = budget.substring(budget.indexOf("value")+ 7, budget.indexOf("value")+ 8)
@@ -109,7 +111,8 @@ export default function LocationsScreen(props) {
             geocode: geocodes[index],
             budget: budget,
             safety: safety,
-            covid: covid
+            covid: covid,
+            population: pop
         })
     }
 
@@ -132,20 +135,7 @@ export default function LocationsScreen(props) {
 
     }
 
-
-
-    // for (let i = 0; i < cities.length; i++) {
-    //     fetch("https://pixabay.com/api/\n?key=25493920-c26c94861653ea34a7c858bd4&q=" + cities[i] +"+city", requestOptions)
-    //         .then(response => response.text())
-    //         .then(result => pictureLoad(result))
-    //         .catch(error => console.log('error', error));
-    //
-    //     function pictureLoad(result){
-    //         var obj = JSON.parse(result)
-    //         testArray.push(obj.hits[0].webformatURL)
-    //         setImage(testArray)
-    //     }
-    // }
+    
 
 
 

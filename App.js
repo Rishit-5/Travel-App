@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CustomMenu from './CustomMenu';
 import HomeScreen from './HomeScreen';
 import TripFinderScreen from './TripFinderScreen';
-import ProfileScreen from './ProfileScreen';
+import SearchScreen from './SearchScreen';
 import LoginScreen from './LoginScreen';
 import Personalization from "./Personalization";
 
@@ -26,7 +26,7 @@ function Tabs() {
             drawerContent={(props) => <CustomMenu {...props} />}>
             <Drawer.Screen name="Home" component={HomeScreen} />
             <Drawer.Screen name="Trip Finder" component={TripFinderScreen} />
-            <Drawer.Screen name="Profile" component={ProfileScreen} />
+            <Drawer.Screen name="Search" component={SearchScreen} />
             <Drawer.Screen name="Locations" component={LocationsScreen} />
             <Drawer.Screen name="LocationData" component={LocationDataScreen} />
         </Drawer.Navigator>
