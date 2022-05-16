@@ -4,6 +4,7 @@ import Firebase from './firebase'
 const auth = Firebase.auth()
 
 export default function HomeScreen(props) {
+
     function saveAccessToken (result){
         var a = JSON.parse(result)
         console.log(a)
@@ -61,11 +62,11 @@ export default function HomeScreen(props) {
 
     }
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>{auth.currentUser?.email}</Text>
-            <Button
-                onPress={() => apiCall()} title="api call">
-            </Button>
+        <View style={{ flex: 1}}>
+            <Text style={{color: "#FFFFFF", fontSize: 40}}>Hey {auth.currentUser?.displayName},</Text>
+
+            <Text style={{color: "#FFFFFF", fontSize: 16}}>Swipe right to achieve your vacation dreams!</Text>
+
         </View>
     );
 }

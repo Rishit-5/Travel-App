@@ -92,6 +92,8 @@ export default function LocationsScreen(props) {
         var obj = JSON.parse(result)
 
         var pop = obj.data.attributes.population
+        pop = separator(pop)
+
 
         var budget = obj.data.attributes.budget
         budget = JSON.stringify(budget)
@@ -116,6 +118,12 @@ export default function LocationsScreen(props) {
         })
     }
 
+    function separator(numb) {
+        var str = numb.toString().split(".");
+        str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return str.join(".");
+    }
+
     function navigation(index){
 
         var myHeaders = new Headers();
@@ -135,7 +143,7 @@ export default function LocationsScreen(props) {
 
     }
 
-    
+
 
 
 

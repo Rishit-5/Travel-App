@@ -33,19 +33,20 @@ export default function Personalization(props) {
     };
 
     let submitForm = () => {
-        if (!(selectedImage == null)){
-            uploadImage(selectedImage.localUri)
-        }
+
         db.ref('users/' + auth.currentUser.uid).set({
             fname: firstName,
             lname: lastName,
             email: auth.currentUser.email,
         });
-        props.navigation.navigate('Tabs', {
+        auth.currentUser.updateProfile({
+            displayName: firstName + " " + lastName
+        }).then(r => props.navigation.navigate('Tabs', {
             screen: 'Home'
-        })
+        }))
+
     };
-    let uploadImage = async (uri) => {
+     let uploadImage = async (uri) => {
         const response = await fetch(uri)
         const blob = await response.blob();
 
@@ -67,10 +68,6 @@ export default function Personalization(props) {
                 <TextInput style = {styles.input} value = {firstName} placeholder="First Name" onChangeText={text => setFirstName(text)}/>
                 <Text style = {{color: "white", textAlign: "center"}}>Last Name</Text>
                 <TextInput style = {styles.input} value = {lastName} placeholder="Last Name" onChangeText={text => setLastName(text)}/>
-                <Image source={{ uri: selectedImage.localUri }} style={styles.thumbnail} />
-                <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-                    <Text style={styles.buttonText}>Pick a photo</Text>
-                </TouchableOpacity>
                 <TouchableOpacity onPress={submitForm} style={styles.button}>
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
@@ -84,10 +81,6 @@ export default function Personalization(props) {
             <TextInput style = {styles.input} value = {firstName} placeholder="First Name" onChangeText={text => setFirstName(text)}></TextInput>
             <Text style = {{color: "white", textAlign: "center"}}>Last Name</Text>
             <TextInput style = {styles.input} value = {lastName} placeholder="Last Name" onChangeText={text => setLastName(text)}></TextInput>
-            <Image source={{ uri: 'https://i.imgur.com/TkIrScD.png' }} style={styles.logo} />
-            <TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
-                <Text style={styles.buttonText}>Pick a photo</Text>
-            </TouchableOpacity>
             <TouchableOpacity onPress={submitForm} style={styles.button}>
                 <Text style={styles.buttonText}>Submit</Text>
             </TouchableOpacity>

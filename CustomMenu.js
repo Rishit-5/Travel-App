@@ -23,7 +23,7 @@ export default function CustomMenu(props){
                 <View style = {{flexDirection: "row", alignItems: "center"}}>
                     <Avatar.Image style = {{marginRight: "5%"}} source = {auth.currentUser?.photoURL}/>
                     <View>
-                        <Text style = {{fontSize: 28, fontWeight: "bold", color: "white"}}>Rishit Patil</Text>
+                        <Text style = {{fontSize: 28, fontWeight: "bold", color: "white"}}>{auth.currentUser?.displayName}</Text>
                         <Text style = {{ fontSize: 14, color: "white"}}>{auth.currentUser?.email}</Text>
                     </View>
                 </View>

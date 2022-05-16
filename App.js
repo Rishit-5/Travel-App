@@ -12,6 +12,7 @@ import Personalization from "./Personalization";
 
 import LocationsScreen from "./LocationsScreen";
 import LocationDataScreen from "./LocationDataScreen";
+import PlacesScreen from "./PlacesScreen";
 
 
 
@@ -29,6 +30,7 @@ function Tabs() {
             <Drawer.Screen name="Search" component={SearchScreen} />
             <Drawer.Screen name="Locations" component={LocationsScreen} />
             <Drawer.Screen name="LocationData" component={LocationDataScreen} />
+            <Drawer.Screen name="Places" component={PlacesScreen} />
         </Drawer.Navigator>
     );
 }
@@ -37,7 +39,7 @@ export default function App() {
         <NavigationContainer theme = {DarkTheme}>
             <Stack.Navigator
 
-                initialRouteName="Tabs"
+                initialRouteName="Login"
                 drawerContent={(props) => <CustomMenu {...props} />}>
                 <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
                 <Stack.Screen name="Personalization" component={Personalization} options={{headerShown: false}}/>
